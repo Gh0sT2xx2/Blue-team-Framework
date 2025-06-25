@@ -53,7 +53,7 @@ const SplashScreen = ({ onFinish }: SplashScreenProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Developed by: Diogo Lages
+              Developed by: An0ns4i
             </motion.p>
           )}
         </AnimatePresence>
