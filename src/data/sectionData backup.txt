@@ -1,0 +1,313 @@
+import { z } from "zod";
+
+export interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  status: 'active' | 'inactive';
+  url?: string;
+  docsUrl?: string;
+}
+
+export interface Section {
+  id: string;
+  title: string;
+  tools: Tool[];
+}
+
+export const sections: Section[] = [
+  {
+    id: 'network-discovery',
+    title: 'Network Discovery & Mapping',
+    tools: [
+      {
+        id: 'nmap',
+        name: 'Nmap',
+        description: 'Advanced network scanner for security auditing',
+        status: 'active',
+        url: 'https://nmap.org',
+        docsUrl: 'https://nmap.org/docs.html'
+      },
+      {
+        id: 'nuclei',
+        name: 'Nuclei',
+        description: 'Fast and customizable vulnerability scanner',
+        status: 'active',
+        url: 'https://nuclei.projectdiscovery.io',
+        docsUrl: 'https://nuclei.projectdiscovery.io/nuclei/get-started/'
+      },
+      {
+        id: 'masscan',
+        name: 'Masscan',
+        description: 'Fast port scanner for enterprise networks',
+        status: 'active',
+        url: 'https://github.com/robertdavidgraham/masscan',
+        docsUrl: 'https://github.com/robertdavidgraham/masscan#masscan-mass-ip-port-scanner'
+      },
+      {
+        id: 'angry-ip',
+        name: 'Angry IP Scanner',
+        description: 'Fast network scanner with cross-platform support',
+        status: 'active',
+        url: 'https://angryip.org',
+        docsUrl: 'https://angryip.org/documentation/'
+      }
+    ]
+  },
+  {
+    id: 'security-monitoring',
+    title: 'Security Monitoring',
+    tools: [
+      {
+        id: 'sysmon',
+        name: 'Sysmon',
+        description: 'Advanced system monitoring for Windows',
+        status: 'active',
+        url: 'https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon',
+        docsUrl: 'https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon#usage'
+      },
+      {
+        id: 'kibana',
+        name: 'Kibana',
+        description: 'Powerful data visualization platform',
+        status: 'active',
+        url: 'https://www.elastic.co/kibana',
+        docsUrl: 'https://www.elastic.co/guide/en/kibana/current/index.html'
+      },
+      {
+        id: 'velociraptor',
+        name: 'Velociraptor',
+        description: 'Endpoint visibility and collection tool',
+        status: 'active',
+        url: 'https://docs.velociraptor.app',
+        docsUrl: 'https://docs.velociraptor.app/docs/overview'
+      },
+      {
+        id: 'phishing-catcher',
+        name: 'Phishing Catcher',
+        description: 'Real-time phishing domain detection',
+        status: 'active',
+        url: 'https://github.com/x0rz/phishing_catcher',
+        docsUrl: 'https://github.com/x0rz/phishing_catcher#phishing-catcher'
+      }
+    ]
+  },
+  {
+    id: 'malware-analysis',
+    title: 'Malware Detection & Analysis',
+    tools: [
+      {
+        id: 'virustotal',
+        name: 'VirusTotal',
+        description: 'Multi-engine malware analysis platform',
+        status: 'active',
+        url: 'https://www.virustotal.com/',
+        docsUrl: 'https://developers.virustotal.com/v3.0/reference'
+      },
+      {
+        id: 'ida',
+        name: 'IDA Pro',
+        description: 'Advanced disassembler and debugger',
+        status: 'active',
+        url: 'https://www.hex-rays.com/products/ida/',
+        docsUrl: 'https://www.hex-rays.com/products/ida/support/index.shtml'
+      },
+      {
+        id: 'ghidra',
+        name: 'Ghidra',
+        description: 'Software reverse engineering framework',
+        status: 'active',
+        url: 'https://ghidra-sre.org/',
+        docsUrl: 'https://ghidra-sre.org/ghidra_docs/index.html'
+      },
+      {
+        id: 'cuckoo',
+        name: 'Cuckoo Sandbox',
+        description: 'Automated malware analysis system',
+        status: 'active',
+        url: 'https://cuckoosandbox.org/',
+        docsUrl: 'https://cuckoosandbox.org/docs/'
+      }
+    ]
+  },
+  {
+    id: 'threat-intel',
+    title: 'Threat Intelligence',
+    tools: [
+      {
+        id: 'misp',
+        name: 'MISP',
+        description: 'Open source threat intelligence platform',
+        status: 'active',
+        url: 'https://www.misp-project.org/',
+        docsUrl: 'https://www.misp-project.org/documentation.html'
+      },
+      {
+        id: 'maltego',
+        name: 'Maltego',
+        description: 'Interactive data mining tool',
+        status: 'active',
+        url: 'https://www.paterva.com/maltego/',
+        docsUrl: 'https://www.paterva.com/maltego/documentation/'
+      },
+      {
+        id: 'threatconnect',
+        name: 'ThreatConnect',
+        description: 'Intelligence-driven security operations',
+        status: 'active',
+        url: 'https://www.threatconnect.com/',
+        docsUrl: 'https://www.threatconnect.com/resources/'
+      }
+    ]
+  },
+  {
+    id: 'incident-response',
+    title: 'Incident Response',
+    tools: [
+      {
+        id: 'volatility',
+        name: 'Volatility',
+        description: 'Advanced memory forensics framework',
+        status: 'active',
+        url: 'https://www.volatilityfoundation.org/',
+        docsUrl: 'https://github.com/volatilityfoundation/volatility'
+      },
+      {
+        id: 'chainsaw',
+        name: 'Chainsaw',
+        description: 'Windows event log forensics',
+        status: 'active',
+        url: 'https://github.com/williballenthin/chainsaw',
+        docsUrl: 'https://github.com/williballenthin/chainsaw#usage'
+      },
+      {
+        id: 'loki',
+        name: 'Loki',
+        description: 'Simple IOC and incident response scanner',
+        status: 'active',
+        url: 'https://github.com/Neo23x0/Loki',
+        docsUrl: 'https://github.com/Neo23x0/Loki#usage'
+      }
+    ]
+  },
+  {
+    id: 'vulnerability-management',
+    title: 'Vulnerability Management',
+    tools: [
+      {
+        id: 'openvas',
+        name: 'OpenVAS',
+        description: 'Open-source vulnerability scanner and manager',
+        status: 'active',
+        url: 'https://www.openvas.org/',
+        docsUrl: 'https://docs.greenbone.net/GSM-Manual/gos-22.04/en/'
+      },
+      {
+        id: 'nessus',
+        name: 'Nessus Essentials',
+        description: 'Professional vulnerability scanner with extensive database',
+        status: 'active',
+        url: 'https://www.tenable.com/products/nessus',
+        docsUrl: 'https://docs.tenable.com/nessus/'
+      },
+      {
+        id: 'nexpose',
+        name: 'Nexpose',
+        description: 'Comprehensive vulnerability management platform',
+        status: 'active',
+        url: 'https://www.rapid7.com/products/nexpose/',
+        docsUrl: 'https://docs.rapid7.com/nexpose/'
+      }
+    ]
+  },
+  {
+    id: 'data-recovery',
+    title: 'Data Recovery',
+    tools: [
+      {
+        id: 'recuva',
+        name: 'Recuva',
+        description: 'Professional file recovery tool',
+        status: 'active',
+        url: 'https://www.ccleaner.com/recuva',
+        docsUrl: 'https://www.ccleaner.com/docs/recuva'
+      },
+      {
+        id: 'extundelete',
+        name: 'Extundelete',
+        description: 'Ext3/ext4 partition recovery utility',
+        status: 'active',
+        url: 'http://extundelete.sourceforge.net/',
+        docsUrl: 'http://extundelete.sourceforge.net/#usage'
+      },
+      {
+        id: 'testdisk',
+        name: 'TestDisk',
+        description: 'Powerful free data recovery software',
+        status: 'active',
+        url: 'https://www.cgsecurity.org/wiki/TestDisk',
+        docsUrl: 'https://www.cgsecurity.org/wiki/TestDisk_Step_By_Step'
+      }
+    ]
+  },
+  {
+    id: 'digital-forensics',
+    title: 'Digital Forensics',
+    tools: [
+      {
+        id: 'sans-sift',
+        name: 'SANS SIFT',
+        description: 'SANS Investigative Forensic Toolkit',
+        status: 'active',
+        url: 'https://www.sans.org/tools/sift-workstation/',
+        docsUrl: 'https://github.com/teamdfir/sift'
+      },
+      {
+        id: 'sleuthkit',
+        name: 'The Sleuth Kit',
+        description: 'Digital forensics analysis toolkit',
+        status: 'active',
+        url: 'https://www.sleuthkit.org/',
+        docsUrl: 'https://wiki.sleuthkit.org/'
+      },
+      {
+        id: 'autopsy',
+        name: 'Autopsy',
+        description: 'Digital forensics platform',
+        status: 'active',
+        url: 'https://www.autopsy.com/',
+        docsUrl: 'https://github.com/sleuthkit/autopsy/wiki'
+      }
+    ]
+  },
+  {
+    id: 'security-training',
+    title: 'Security Awareness Training',
+    tools: [
+      {
+        id: 'tryhackme',
+        name: 'TryHackMe',
+        description: 'Interactive cybersecurity training platform',
+        status: 'active',
+        url: 'https://tryhackme.com',
+        docsUrl: 'https://docs.tryhackme.com'
+      },
+      {
+        id: 'hackthebox',
+        name: 'HackTheBox',
+        description: 'Advanced penetration testing labs',
+        status: 'active',
+        url: 'https://www.hackthebox.com',
+        docsUrl: 'https://help.hackthebox.com'
+      },
+      {
+        id: 'cyberdefenders',
+        name: 'CyberDefenders',
+        description: 'Blue team challenges platform',
+        status: 'active',
+        url: 'https://cyberdefenders.org',
+        docsUrl: 'https://cyberdefenders.org/docs'
+      }
+    ]
+  }
+];
