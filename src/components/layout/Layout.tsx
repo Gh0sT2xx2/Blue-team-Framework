@@ -24,7 +24,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/Diogo-Lages"
+              href="https://github.com/Gh0sT2xx2"
               target="_blank"
               rel="noopener noreferrer"
             >
