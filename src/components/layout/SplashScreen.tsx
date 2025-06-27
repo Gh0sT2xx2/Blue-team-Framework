@@ -39,24 +39,11 @@ const SplashScreen = ({ onFinish }: SplashScreenProps) => {
             type: "spring",
             stiffness: 200,
             damping: 20,
-            duration: 1
+            duration: 10
           }}
         >
-          BLUE TEAM FRAMEWORK
+          BLUE TEAM FRAMEWORK - Developed by An0ns4i
         </motion.h1>
-
-        <AnimatePresence>
-          {showTagline && (
-            <motion.p
-              className="text-[#00FF00] text-xl mt-4 text-center font-orbitron"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Developed by: An0ns4i
-            </motion.p>
-          )}
-        </AnimatePresence>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
