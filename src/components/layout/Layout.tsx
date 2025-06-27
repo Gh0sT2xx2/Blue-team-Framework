@@ -19,26 +19,8 @@ export const Layout = ({ children }: LayoutProps) => {
       <header className="border-b border-[#00FF00]/20 backdrop-blur-sm bg-black/50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-[#00FF00] text-2xl font-orbitron font-bold">
-            BLUE TEAM FRAMEWORK
+            BLUE TEAM FRAMEWORK - Developed By An0ns4i
           </h1>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/Gh0sT2xx2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="ghost"
-                className="bg-black border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10"
-              >
-                <Github className="w-5 h-5 mr-2" />
-                View on GitHub
-              </Button>
-            </a>
-            <BackgroundStyler onStyleChange={setBgStyle} />
-          </div>
-        </div>
       </header>
 
       <main className="container mx-auto px-4 py-8">
