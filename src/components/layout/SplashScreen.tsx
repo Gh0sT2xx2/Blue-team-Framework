@@ -31,20 +31,6 @@ const SplashScreen = ({ onFinish }: SplashScreenProps) => {
       transition={{ duration: 0.6 }}
     >
       <div className="relative">
-        <motion.h1
-          className="text-[#00FF00] text-4xl md:text-6xl font-orbitron font-bold"
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 20,
-            duration: 10
-          }}
-        >
-          BLUE TEAM FRAMEWORK - Developed by An0ns4i
-        </motion.h1>
-
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
